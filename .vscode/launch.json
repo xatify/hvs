@@ -1,0 +1,36 @@
+{
+	// Use IntelliSense to learn about possible attributes.
+	// Hover to view descriptions of existing attributes.
+	// For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+	"version": "0.2.0",
+	"configurations": [
+		{
+			// for Linux
+			"name": "nhsw",
+			"type": "cppdbg",
+			"request": "launch",
+			"program": "${workspaceRoot}/hnsw/build/main",
+			"args": [
+				"--dataset", "queries_size3_laion_len32_org.bin",
+				"--dataset-size", "3",
+				"--mode", "0",
+				"--index-path", "test0",
+				"--timeseries-size", "32",
+				"--level", "1",
+				"--delta", "0.5"
+			],
+			"stopAtEntry": true,
+			"cwd": "${workspaceRoot}",
+			"environment": [],
+			"externalConsole": true,
+			"MIMode": "gdb",
+			"setupCommands": [
+			  {
+				"description": "Enable pretty-printing for gdb",
+				"text": "-enable-pretty-printing",
+				"ignoreFailures": true
+			  }
+			]
+		  }
+	]
+}

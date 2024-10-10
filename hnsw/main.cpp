@@ -51,7 +51,7 @@ int main(int argc, char **argv) {
 	static unsigned int queries_size = 0;
 	static unsigned int ts_length;
 	static unsigned int level = 1;
-	static unsigned int delta = 0.5;
+	static float delta = 0.5;
 	static int ef = 1000;
 	static int mode = 0;
 
@@ -107,7 +107,7 @@ int main(int argc, char **argv) {
 				level = atoi(optarg);
 				break;
 			case 'de':
-				delta = atoi(optarg);
+				delta = atof(optarg);
 				break;
 			case 'e':
 				ef = atoi(optarg);

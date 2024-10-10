@@ -1170,6 +1170,8 @@ void build_and_query(
 	printf("vecdim = %d\n", vecdim);
 	printf("level = %d\n", max_level_);
 
+	std::cout << "delta " << delta << std::endl;
+
 	int dim_;
 	int max_num = pow(2, max_level_ + OFF);
 	int remainder = vecdim % max_num;
@@ -1191,6 +1193,8 @@ void build_and_query(
 	int maxk = 100;
 	const float MAXREAL = 3.402823466e+38F;
 	srand(time(NULL));
+
+	std::cout << "vecdim " << vecdim << " dim_ " << dim_ << std::endl;
 
 	int in = 0;
 	L2Space l2space(vecdim, dim_);
@@ -1234,7 +1238,6 @@ void build_and_query(
 		return;
 	}
 
-	//--------------------some arrays----------------------------------------
 	unsigned char ***obj_quantizer = new unsigned char **[max_level_];
 	for (int i = 0; i < max_level_; i++)
 	{
@@ -1421,6 +1424,7 @@ void build_and_query(
 
 	int j1 = 0;
 
+	//--------------------some arrays----------------------------------------
 #pragma omp parallel for
 	for (int i = 1; i < vecsize; i++)
 	{
@@ -1441,6 +1445,7 @@ void build_and_query(
 		appr_alg->addPoint((void *)(data[i]), (size_t)i, NULL, -1, false);
 	}
 
+	std::cout << "--------------" << std::endl;
 	cout << "Build base layer time:" << 1e-6 * stopw_base_layer.getElapsedTimeMicro() << "  seconds\n";
 	appr_alg->est_density(density, vecsize, vecdim);
 	appr_alg->permutation(link_, vecsize, max_level_, NULL, -1);
